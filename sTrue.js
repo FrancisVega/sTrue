@@ -2,60 +2,121 @@ sTrue = (function() {
 
   function STRUE () { }
 
-  function foo() {
-    log("FOO");
+  /**
+   * A custom test message
+   * @name resultMsg
+   * @param {boolean} the result of test
+   * @param {string} custom test message
+   * @param {string} the restul of the test in string
+   * @return {boolean}
+   * @example
+   * test(1 == 1, "That should be true")
+   */
+  function resultMsg(i, msg, result) {
+    log("{"+i+"}" + " " + msg + " " + result)
   }
 
+  /*
+   * Constructor
+   */
   var sTrue = {
     suite: function (msg, t) {
       log(msg);
       t.call()
     },
-    true: function (i, msg) {
-      foo();
-      var tmsg = "Fail!";
-      if (i) { tmsg = "Passed!"; }
+
+    /**
+     * Pass the test if 'e' is true
+     * @name true
+     * @return {boolean}
+     * @example
+     * test(1 == 1, "That should be true")
+     */
+    true: function (e, msg) {
+      var result = "Fail!";
+      if (e) { result = "Passed!"; }
       if (!msg) { msg = "Should be true"; }
-      log("  {"+i+"}" + " \""+ msg + "\" : " + tmsg);
+      resultMsg(e, msg, result);
+
+      return e
     },
-    false: function (i, msg) {
-      var tmsg = "Fail!";
-      if (!i) { tmsg = "Passed!"; }
+
+    /**
+     * Pass the test if 'e' is false
+     * @name false
+     * @return {boolean}
+     * @example
+     * test(0 == 1, "That should be false")
+     */
+    false: function (e, msg) {
+      var result = "Fail!";
+      if (!e) { result = "Passed!"; }
       if (!msg) { msg = "Should be false"; }
-      log("  {"+i+"}" + " \""+ msg + "\" : " + tmsg);
+      resultMsg(e, msg, result);
+
+      return e
     },
+
+    /**
+     * Pass the test if 'a' is equal to 'b'
+     * @name false
+     * @return {boolean}
+     */
     equal: function (a, b, msg) {
-      var tmsg = "Fail!";
-      var ig = a === b;
-      if (ig) { tmsg = "Passed!"; }
+      var result = "Fail!";
+      var e = a === b;
+      if (e) { result = "Passed!"; }
       if (!msg) { msg = "Should be equal"; }
-      log("  {"+ ig +"}" + " \""+ msg + "\" : " + tmsg);
-      return ;
+      resultMsg(e, msg, result);
+
+      return e;
     },
+
+    /**
+     * Pass the test if 'a' is not equal to 'b'
+     * @name false
+     * @return {boolean}
+     */
     notequal: function (a, b, msg) {
-      var tmsg = "Fail!";
-      var ig = a === b;
-      if (!ig) { tmsg = "Passed!"; }
+      var result = "Fail!";
+      var e = a === b;
+      if (!e) { result = "Passed!"; }
       if (!msg) { msg = "Should be not equal"; }
-      log("  {"+ ig +"}" + " "+ msg + " : " + tmsg);
-      return ;
+      resultMsg(e, msg, result);
+
+      return e;
     },
+
+    /**
+     * Pass the test if the class of 'a' is equal to 'b'
+     * @name false
+     * @return {boolean}
+     */
     class: function (a, b, msg) {
-      var tmsg = "Fail!";
-      var ig = a.class() == b;
-      if (ig) { tmsg = "Passed!"; }
-      if (!msg) { msg = "Should be same type"; }
-      log("  {"+ ig +"}" + " \""+ msg + "\" : " + tmsg);
-      return ;
+      var result = "Fail!";
+      var e = a.class() == b;
+      if (e) { result = "Passed!"; }
+      if (!msg) { msg = "Should be class: " + b; }
+      resultMsg(e, msg, result);
+
+      return e;
     },
+
+    /**
+     * Pass the test if the type of 'a' is equal to 'b'
+     * @name false
+     * @return {boolean}
+     */
     typeof: function (a, b, msg) {
-      var tmsg = "Fail!";
-      var ig = typeof(a) === b;
-      if (ig) { tmsg = "Passed!"; }
-      if (!msg) { msg = "Should be same type"; }
-      log("  {"+ ig +"}" + " \""+ msg + "\" : " + tmsg);
-      return ;
+      var result = "Fail!";
+      var e = typeof(a) === b;
+      if (e) { result = "Passed!"; }
+      if (!msg) { msg = "Should be typeof: " + b; }
+      resultMsg(e, msg, result);
+
+      return e;
     }
+
   };
 
   return sTrue;
