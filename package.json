@@ -1,0 +1,21 @@
+{
+  "name": "Secuoyas",
+  "version": "1.0.0",
+  "description": "Secuoyas web site",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Secuoyas",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "jshint": "^2.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
