@@ -13,7 +13,7 @@ sTrue = (function() {
    * test(1 == 1, "That should be true")
    */
   function resultMsg(i, msg, result) {
-    log("{"+i+"}" + " " + msg + " " + result)
+    log("··· " + "{"+i+"}" + " " + msg + " " + result)
   }
 
   /*
