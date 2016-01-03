@@ -1,65 +1,47 @@
 
-  ////////////////////////////////////////////////////////////////////////////
-  //                                                                        //
-  //  Secuoyas MOtion Wrapper Library - Secuoyas (c) 2015                   //
-  //                                                                        //
-  ////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+//                                                                        //
+//  Secuoyas MOtion Wrapper Library - Secuoyas (c) 2015                   //
+//                                                                        //
+////////////////////////////////////////////////////////////////////////////
 
 
-  'use strict';
+'use strict';
 
-  var gulp         = require('gulp');
-  var jshint       = require('gulp-jshint');
-  var browserSync  = require('browser-sync');
+var gulp         = require('gulp');
+var jshint       = require('gulp-jshint');
+var browserSync  = require('browser-sync');
 
-  //
-  // Dirs
-  //
+//
+// Dirs
+//
 
-  var dirs = {
-    src: 'smowl/uncompressed/',
-    dst: 'dist/'
-  };
+var dirs = {
+  src: '',
+  dst: '/sketchplugins/zen.sketchplugin/Contents/Sketch/sTrue',
+};
 
-  //
-  // REFRESCO DEL NAVEGADOR
-  //
+//
+// WATCH
+//
 
-  gulp.task('browserSync', function() {
-    browserSync({
-      files: "*.php, *.html, *.js, *.css",
-      server: {
-        baseDir: "",
-        //baseDir: dirs.tests
-      },
-      // browser: 'safari'
-      browser: 'google chrome',
-      notify: false
-    })
-  });
+// Watch
+gulp.task('watch', function(){
+  gulp.watch(dirs.src + '**/*', ['copy']);
+});
 
-  //
-  // WATCH
-  //
-
-  gulp.task('watch', ['browserSync'], function(){
-    gulp.watch(dirs.src + '**/*.js', browserSync.reload);
-  });
+//
+// COPY
+//
+gulp.task('copy', function() {
+  console.log("Copy sTrue in " + dirs.dst);
+  gulp.src(['sTrue.js'], {cwd: dirs.src})
+    .pipe(gulp.dest(dirs.dst));
+});
 
 
-  //
-  // LINT TASK
-  //
+//
+// TAREAS GULP
+//
 
-  gulp.task('lint', function() {
-    return gulp.src(dirs.src + 'lib/**/*')
-      .pipe(plumber())
-      .pipe(jshint())
-      .pipe(jshint.reporter('default'));
-  });
-
-  //
-  // TAREAS GULP
-  //
-
-  gulp.task('default', ['watch']);
+gulp.task('default', ['copy', 'watch']);
