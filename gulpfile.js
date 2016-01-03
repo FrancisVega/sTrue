@@ -1,13 +1,3 @@
-
-////////////////////////////////////////////////////////////////////////////
-//                                                                        //
-//  Secuoyas MOtion Wrapper Library - Secuoyas (c) 2015                   //
-//                                                                        //
-////////////////////////////////////////////////////////////////////////////
-
-
-'use strict';
-
 var gulp         = require('gulp');
 var jshint       = require('gulp-jshint');
 var browserSync  = require('browser-sync');
@@ -16,6 +6,7 @@ var browserSync  = require('browser-sync');
 // Dirs
 //
 
+// /sketchpkygins is a link to Sketch plugin directory
 var dirs = {
   src: '',
   dst: '/sketchplugins/zen.sketchplugin/Contents/Sketch/sTrue',
