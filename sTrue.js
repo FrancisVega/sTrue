@@ -1,6 +1,15 @@
-sTrue = (function() {
+var sTrue;
 
-  function STRUE () { }
+(function() {
+
+  sTrue = function(m, t) {
+    return new STRUE(m, t);
+  }
+
+  var STRUE = function(m, t) {
+    log(m)
+    t.call(this);
+  }
 
   /**
    * A custom test message
@@ -16,14 +25,7 @@ sTrue = (function() {
     log("··· " + "{"+i+"}" + " " + msg + " " + result)
   }
 
-  /*
-   * Constructor
-   */
-  var sTrue = {
-    suite: function (msg, t) {
-      log(msg);
-      t.call()
-    },
+  sTrue.fn = STRUE.prototype = {
 
     /**
      * Pass the test if 'e' is true
@@ -118,7 +120,5 @@ sTrue = (function() {
     }
 
   };
-
-  return sTrue;
 
 }());
