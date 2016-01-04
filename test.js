@@ -9,8 +9,12 @@ sTrue("Testeamos el query %shapes%", function() {
   var shapes = $shapesQuery.layers;
 
   var arrayClass = [];
-  for(var i=0, len=shapes.length; i<len;i++) { arrayClass.push(shapes[i].class())	}
-  uniqueArray = arrayClass.filter(function(item, pos) { return arrayClass.indexOf(item) == pos; });
+  for(var i=0, len=shapes.length; i<len; i++) {
+    arrayClass.push(shapes[i].class());
+  }
+  uniqueArray = arrayClass.filter(function(item, pos) { 
+    return arrayClass.indexOf(item) == pos; 
+  });
 
   // @Tests	
   this.true(uniqueArray.length === 1, "Después del filtrado, solo debe de quedar un elemento");
@@ -18,7 +22,6 @@ sTrue("Testeamos el query %shapes%", function() {
   this.true(shapes.length > 0, "Debe haber al menos un element en el array de capas");
 
   // @End
-  $shapesQuery = null;
-  shapes = null;
+  $shapesQuery, shapes = null;
 
 });
