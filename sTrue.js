@@ -2,12 +2,16 @@ var sTrue;
 
 (function() {
 
+  var passed = "* OK *";
+  var failed = "*** FAILED ***";
+
   sTrue = function(m, t) {
     return new STRUE(m, t);
   }
 
   var STRUE = function(m, t) {
-    log(m)
+    log("");
+    log("  @test: \""+ m +"\"");
     t.call(this);
   }
 
@@ -17,11 +21,10 @@ var sTrue;
    * @param {string} custom test message
    * @param {string} the restul of the test in string
    * @return {boolean}
-   * @example
-   * test(1 == 1, "That should be true")
    */
   function resultMsg(i, msg, result) {
-    log("··· " + "{"+i+"}" + " " + msg + " " + result)
+    //log("  " + "{"+i+"}" + " " + msg + " " + result);
+    log("  · " + "{"+result+"}" + " " + msg);
   }
 
   sTrue.fn = STRUE.prototype = {
@@ -31,8 +34,8 @@ var sTrue;
      * @return {boolean}
      */
     true: function (e, msg) {
-      var result = "*** FAILED ***";
-      if (e) { result = "Passed!"; }
+      var result = failed;
+      if (e) { result = passed; }
       if (!msg) { msg = "Should be true"; }
       resultMsg(e, msg, result);
 
@@ -44,8 +47,8 @@ var sTrue;
      * @return {boolean}
      */
     false: function (e, msg) {
-      var result = "*** FAILED ***";
-      if (!e) { result = "Passed!"; }
+      var result = failed;
+      if (!e) { result = passed; }
       if (!msg) { msg = "Should be false"; }
       resultMsg(e, msg, result);
 
@@ -57,9 +60,9 @@ var sTrue;
      * @return {boolean}
      */
     equal: function (a, b, msg) {
-      var result = "*** FAILED ***";
+      var result = failed;
       var e = a == b;
-      if (e) { result = "Passed!"; }
+      if (e) { result = passed; }
       if (!msg) { msg = "Should be equal"; }
       resultMsg(e, msg, result);
 
@@ -71,9 +74,9 @@ var sTrue;
      * @return {boolean}
      */
     notequal: function (a, b, msg) {
-      var result = "*** FAILED ***";
+      var result = failed;
       var e = a == b;
-      if (!e) { result = "Passed!"; }
+      if (!e) { result = passed; }
       if (!msg) { msg = "Should be not equal"; }
       resultMsg(e, msg, result);
 
@@ -85,10 +88,10 @@ var sTrue;
      * @return {boolean}
      */
     class: function (a, b, msg) {
-      var result = "*** FAILED ***";
+      var result = failed;
       var e = a.class() == b;
-      if (e) { result = "Passed!"; }
-      if (!msg) { msg = "Should be class: " + b; }
+      if (e) { result = passed; }
+      if (!msg) { msg = "Should be " + b; }
       resultMsg(e, msg, result);
 
       return e;
@@ -99,9 +102,9 @@ var sTrue;
      * @return {boolean}
      */
     typeof: function (a, b, msg) {
-      var result = "*** FAILED ***";
+      var result = failed;
       var e = typeof(a) === b;
-      if (e) { result = "Passed!"; }
+      if (e) { result = passed; }
       if (!msg) { msg = "Should be typeof: " + b; }
       resultMsg(e, msg, result);
 
