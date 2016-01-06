@@ -25,3 +25,106 @@ sTrue("Testeamos el query %shapes%", function() {
   $shapesQuery, shapes = null;
 
 });
+
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+sTrue("Testeamos el query %shapes%", function() {
+
+  // @Setup
+  // @Tests	
+  // @End
+
+});
+
+
+
