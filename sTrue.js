@@ -2,17 +2,47 @@ var sTrue;
 
 (function() {
 
+  /*
+   * Global tests messages
+   */
   var passed = "* OK *";
   var failed = "*** FAILED ***";
 
+  /*
+   * Constructor
+   */
   sTrue = function(m, t) {
     return new STRUE(m, t);
   }
 
+  /*
+   * sTrue
+   */
   var STRUE = function(m, t) {
     log("");
-    log("  @test: \""+ m +"\"");
+    var title = "  @test: \""+ m +"\"";
+    log(title);
+    underline(title, "´", 2, 2);
+
     t.call(this);
+  }
+
+  /**
+   * Print s string t times.
+   */
+  function print(s, t) {
+    for(var i=0, _s=""; i<t; i++) { _s += s; }
+    return _s;
+  }
+
+  /**
+   * Underline (log) string str with c character and p prefix margin
+   */
+  function underline(str, c, o, p) {
+    var u = "";
+    u = print(" ", p);
+    u += print(c, str.length-p);
+    log(u);
   }
 
   /**
