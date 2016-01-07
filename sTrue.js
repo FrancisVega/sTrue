@@ -1,3 +1,4 @@
+
 var sTrue;
 
 (function() {
@@ -12,6 +13,7 @@ var sTrue;
    * Constructor
    */
   sTrue = function(m, t) {
+    indent = 2;
     return new STRUE(m, t);
   }
 
@@ -20,17 +22,25 @@ var sTrue;
    */
   var STRUE = function(m, t) {
     log("");
-    var title = "  @test: \""+ m +"\"";
-    log(title);
-    underline(title, "´", 2, 2);
-
+    title = "@test: \""+ m +"\"";
+    logg(title, indent, "");
+    underline(title, indent, "´");
     t.call(this);
+  }
+
+  /*
+   * log
+   */
+  function logg(msg, leftMargin, charLeftMargin) {
+    var margin = "";
+    for (var i=0; i<leftMargin; i++) { margin += " "; }
+    log(margin + msg);
   }
 
   /**
    * Print s string t times.
    */
-  function print(s, t) {
+  function printy(s, t) {
     for(var i=0, _s=""; i<t; i++) { _s += s; }
     return _s;
   }
@@ -38,10 +48,10 @@ var sTrue;
   /**
    * Underline (log) string str with c character and p prefix margin
    */
-  function underline(str, c, o, p) {
+  function underline(str, p, c) {
     var u = "";
-    u = print(" ", p);
-    u += print(c, str.length-p);
+    u = printy(" ", p);
+    u += printy(c, str.length);
     log(u);
   }
 
@@ -53,17 +63,27 @@ var sTrue;
    * @return {boolean}
    */
   function resultMsg(i, msg, result) {
-    //log("  " + "{"+i+"}" + " " + msg + " " + result);
-    log("  · " + "{"+result+"}" + " " + msg);
+    logg("{"+result+"}" + " " + msg, indent)
   }
 
   sTrue.fn = STRUE.prototype = {
+
+    /*
+     *assert: {
+     *  isTrue: function(e, msg) {
+     *    var result = failed;
+     *    if (e) { result = passed; }
+     *    if (!msg) { msg = "Should be true"; }
+     *    resultMsg(e, msg, result);
+     *  }
+     *},
+     */
 
     /**
      * Pass the test if 'e' is true
      * @return {boolean}
      */
-    true: function (e, msg) {
+    isTrue: function (e, msg) {
       var result = failed;
       if (e) { result = passed; }
       if (!msg) { msg = "Should be true"; }
@@ -76,7 +96,7 @@ var sTrue;
      * Pass the test if 'e' is false
      * @return {boolean}
      */
-    false: function (e, msg) {
+    isFalse: function (e, msg) {
       var result = failed;
       if (!e) { result = passed; }
       if (!msg) { msg = "Should be false"; }
@@ -89,7 +109,7 @@ var sTrue;
      * Pass the test if 'a' is equal to 'b'
      * @return {boolean}
      */
-    equal: function (a, b, msg) {
+    isEqual: function (a, b, msg) {
       var result = failed;
       var e = a == b;
       if (e) { result = passed; }
@@ -103,7 +123,7 @@ var sTrue;
      * Pass the test if 'a' is not equal to 'b'
      * @return {boolean}
      */
-    notequal: function (a, b, msg) {
+    isNotEqual: function (a, b, msg) {
       var result = failed;
       var e = a == b;
       if (!e) { result = passed; }
@@ -117,7 +137,7 @@ var sTrue;
      * Pass the test if the class of 'a' is equal to 'b'
      * @return {boolean}
      */
-    class: function (a, b, msg) {
+    isClass: function (a, b, msg) {
       var result = failed;
       var e = a.class() == b;
       if (e) { result = passed; }
@@ -131,7 +151,7 @@ var sTrue;
      * Pass the test if the type of 'a' is equal to 'b'
      * @return {boolean}
      */
-    typeof: function (a, b, msg) {
+    isTypeof: function (a, b, msg) {
       var result = failed;
       var e = typeof(a) === b;
       if (e) { result = passed; }
