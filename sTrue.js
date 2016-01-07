@@ -88,8 +88,6 @@ var sTrue;
       if (e) { result = passed; }
       if (!msg) { msg = "Should be true"; }
       resultMsg(e, msg, result);
-
-      return e
     },
 
     /**
@@ -101,8 +99,6 @@ var sTrue;
       if (!e) { result = passed; }
       if (!msg) { msg = "Should be false"; }
       resultMsg(e, msg, result);
-
-      return e
     },
 
     /**
@@ -115,8 +111,6 @@ var sTrue;
       if (e) { result = passed; }
       if (!msg) { msg = "Should be equal"; }
       resultMsg(e, msg, result);
-
-      return e;
     },
 
     /**
@@ -129,8 +123,6 @@ var sTrue;
       if (!e) { result = passed; }
       if (!msg) { msg = "Should be not equal"; }
       resultMsg(e, msg, result);
-
-      return e;
     },
 
     /**
@@ -143,8 +135,6 @@ var sTrue;
       if (e) { result = passed; }
       if (!msg) { msg = "Should be " + b; }
       resultMsg(e, msg, result);
-
-      return e;
     },
 
     /**
@@ -157,8 +147,6 @@ var sTrue;
       if (e) { result = passed; }
       if (!msg) { msg = "Should be typeof: " + b; }
       resultMsg(e, msg, result);
-
-      return e;
     }
 
   };
